@@ -67,3 +67,14 @@ FROM ventes v
 INNER JOIN produits p ON v.produit_id = p.id
 GROUP BY p.categorie
 ORDER BY chiffre_affaires DESC;
+
+
+
+-- ------------------------------------------------------------
+-- Question 7 — Produit le plus vendu par ville
+-- ------------------------------------------------------------
+SELECT v.ville, p.nom AS produit, SUM(v.quantite) AS total
+FROM ventes v
+INNER JOIN produits p ON v.produit_id = p.id
+GROUP BY v.ville, p.nom
+ORDER BY v.ville, total DESC;
